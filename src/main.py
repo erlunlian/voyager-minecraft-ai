@@ -35,7 +35,7 @@ def initialize_session(config: Config) -> SessionManager:
     )
 
     if active_session:
-        print(f"  Found active session: {active_session}")
+        print(f"  Found active session ID: {active_session}")
         response = input("  Resume this session? (y/n): ").strip().lower()
 
         if response == "y":

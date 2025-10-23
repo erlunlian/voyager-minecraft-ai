@@ -16,6 +16,7 @@ class CriticAgent:
             model="gpt-5-nano",
             api_version="2025-04-01-preview",
             temperature=0,
+            timeout=30,  # 30 second timeout
         )
 
         self.system_prompt = CRITIC_SYSTEM_PROMPT

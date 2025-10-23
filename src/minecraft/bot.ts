@@ -623,6 +623,12 @@ async function handleMessage(message: Message): Promise<void> {
         }
         break;
 
+      case "ping":
+        if (botInstance) {
+          botInstance.sendMessage({ type: "pong", data: null });
+        }
+        break;
+
       default:
         console.error("Unknown message type:", type);
     }

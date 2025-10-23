@@ -17,6 +17,7 @@ class CurriculumAgent:
             model="gpt-5-nano",
             api_version="2025-04-01-preview",
             temperature=0,
+            timeout=30,  # 30 second timeout
         )
 
         self.system_prompt = CURRICULUM_SYSTEM_PROMPT
@@ -60,10 +61,17 @@ class CurriculumAgent:
             HumanMessage(content=context),
         ]
 
-        response = self.llm.invoke(messages)
-        task = response.content.strip()
+        print(f"Calling LLM with context length: {len(context)} characters")
+        print(f"System prompt length: {len(self.system_prompt)} characters")
 
-        return task
+        try:
+            response = self.llm.invoke(messages)
+            task = response.content.strip()
+            print(f"LLM response received: {task}...")
+            return task
+        except Exception as e:
+            print(f"LLM call failed: {e}")
+            raise
 
     def _format_inventory(self, inventory: List) -> str:
         """Format inventory for display."""
