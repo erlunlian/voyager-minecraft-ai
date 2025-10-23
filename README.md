@@ -5,7 +5,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://typescriptlang.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A complete implementation of the Voyager Minecraft AI agent using LangGraph, Mineflayer, ChromaDB, and Azure OpenAI.
+A complete (crude) implementation of the Voyager Minecraft AI agent using LangGraph, Mineflayer, ChromaDB, and Azure OpenAI.
 
 > 🎮 **Live Demo**: Watch the AI agent autonomously explore, learn, and build in Minecraft!
 
@@ -215,19 +215,19 @@ voyager-minecraft-ai/
 
 ```
 ┌─────────────────┐
-│ Propose Task    │ ← Curriculum Agent analyzes bot state
+│ Propose Task    │ ← Curriculum Agent analyzes bot state and proposes task
 └────────┬────────┘
          ↓
 ┌─────────────────┐
-│ Generate Code   │ ← Action Agent retrieves skills & writes code
+│ Generate Code   │ ← Action Agent retrieves skills & writes code to accopmlish task
 └────────┬────────┘
          ↓
 ┌─────────────────┐
-│ Execute Code    │ ← Mineflayer bot runs in Minecraft
+│ Execute Code    │ ← Mineflayer bot runs code in Minecraft
 └────────┬────────┘
          ↓
 ┌─────────────────┐
-│ Evaluate        │ ← Critic compares before/after states
+│ Evaluate        │ ← Eval compares before/after states
 └────────┬────────┘
          ↓
     Success?
@@ -235,7 +235,7 @@ voyager-minecraft-ai/
    Yes    No
     ↓     ↓
 Update   Retry
-Skills   (max 2)
+Skills
     ↓
 Next Task
 ```
@@ -311,7 +311,7 @@ Each agent instantiates `AzureChatOpenAI` - adjust temperature, model, etc.
 ### Azure OpenAI errors
 - Verify API key and endpoint in `.env`
 - Check API quota and rate limits
-- Ensure model `gpt-4` is deployed in your Azure resource
+- Ensure model `gpt-5-nano` is deployed in your Azure resource
 
 ## Development
 
@@ -341,24 +341,6 @@ SELECT * FROM tasks ORDER BY created_at DESC LIMIT 10;
 SELECT * FROM learned_skills;
 ```
 
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Setup
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run tests: `python -m pytest tests/`
-5. Commit your changes: `git commit -m 'Add amazing feature'`
-6. Push to the branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Credits
 
 This project is based on the Voyager research paper:
@@ -373,9 +355,6 @@ This project is based on the Voyager research paper:
   journal = {arXiv preprint arXiv: Arxiv-2305.16291}
 }
 ```
-
-
-## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=erlunlian/voyager-minecraft-ai&type=Date)](https://star-history.com/#erlunlian/voyager-minecraft-ai&Date)
 
