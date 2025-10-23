@@ -125,6 +125,10 @@ You need a running Minecraft Java Edition server. For local testing:
 - Run: `java -Xmx1024M -Xms1024M -jar server.jar nogui`
 - Set `server.properties`: `online-mode=false` for local testing
 
+OR
+
+You can create a new world in Minecraft Java Edition and open to LAN on port 25565, then run the agent
+
 ## Usage
 
 ### Run Voyager Agent
