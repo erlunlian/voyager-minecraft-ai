@@ -209,8 +209,6 @@ voyager-minecraft-ai/
 └── .env                     # Configuration
 ```
 
-> 📘 **Type Organization**: See [TYPE_ORGANIZATION.md](TYPE_ORGANIZATION.md) for details on how types are organized by scope to reduce coupling.
-
 ## How It Works
 
 ### Agent Loop
@@ -363,13 +361,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-Based on the Voyager paper: "Voyager: An Open-Ended Embodied Agent with Large Language Models"
+This project is based on the Voyager research paper:
 
-## Support
+**Wang, G., Xie, Y., Jiang, Y., Mandlekar, A., Xiao, C., Zhu, Y., Fan, L., & Anandkumar, A. (2023). Voyager: An Open-Ended Embodied Agent with Large Language Models. *arXiv preprint arXiv:2305.16291*.**
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/erlunlian/voyager-minecraft-ai/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/erlunlian/voyager-minecraft-ai/discussions)
-- 📧 **Contact**: [Create an issue](https://github.com/erlunlian/voyager-minecraft-ai/issues/new) for questions
+```bibtex
+@article{wang2023voyager,
+  title   = {Voyager: An Open-Ended Embodied Agent with Large Language Models},
+  author  = {Guanzhi Wang and Yuqi Xie and Yunfan Jiang and Ajay Mandlekar and Chaowei Xiao and Yuke Zhu and Linxi Fan and Anima Anandkumar},
+  year    = {2023},
+  journal = {arXiv preprint arXiv: Arxiv-2305.16291}
+}
+```
+
 
 ## Star History
 
