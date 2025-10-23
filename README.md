@@ -259,18 +259,27 @@ LangGraph's `PostgresSaver` checkpoints the state machine, allowing seamless res
 
 ## Primitive Skills
 
-The bot starts with 10 primitive skills:
+The bot starts with 12 primitive skills based on the original Voyager implementation:
 
-1. `collectWood` - Gather wood from trees
-2. `craftItem` - Craft items with recipes
-3. `mineBlock` - Mine specific block types
-4. `goToPosition` - Navigate to coordinates
-5. `placeBlock` - Place blocks
-6. `equipItem` - Equip items from inventory
-7. `followEntity` - Follow players/mobs
-8. `eatFood` - Consume food
-9. `attackEntity` - Combat hostile mobs
-10. `exploreArea` - Random exploration
+1. `craftItem` - Craft items using recipes with crafting table support
+2. `mineBlock` - Mine specific block types with exploration fallback
+3. `placeItem` - Place blocks with proper reference checking
+4. `smeltItem` - Smelt items in furnaces with fuel management
+5. `killMob` - Combat with melee or ranged weapons
+6. `exploreUntil` - Exploration with callback-based early stopping
+7. `getItemFromChest` - Retrieve items from chests
+8. `depositItemIntoChest` - Store items in chests
+9. `checkItemInsideChest` - Inspect chest contents
+10. `shoot` - Ranged weapon attacks (bow, crossbow, etc.)
+11. `givePlacedItemBack` - Restore placed items to inventory
+12. `mineCraftingTable` - Mine crafting tables for portability
+
+Each primitive includes:
+- Parameter validation and error handling
+- Progress feedback via bot.chat()
+- Checkpoint saving with bot.save()
+- Fail counters to prevent infinite loops
+- Robust error recovery mechanisms
 
 These are used as building blocks for more complex learned skills.
 
