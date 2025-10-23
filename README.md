@@ -1,6 +1,35 @@
 # Voyager Minecraft AI
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/erlunlian/voyager-minecraft-ai)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://python.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://typescriptlang.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A complete implementation of the Voyager Minecraft AI agent using LangGraph, Mineflayer, ChromaDB, and Azure OpenAI.
+
+> 🎮 **Live Demo**: Watch the AI agent autonomously explore, learn, and build in Minecraft!
+
+## Quick Start
+
+```bash
+# Clone and setup
+git clone https://github.com/erlunlian/voyager-minecraft-ai.git
+cd voyager-minecraft-ai
+
+# Setup environment
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt && npm install && npm run build
+
+# Start databases
+docker-compose up -d
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your Azure OpenAI credentials
+
+# Run the agent
+python src/main.py
+```
 
 ## Architecture
 
@@ -34,6 +63,7 @@ Voyager is an autonomous Minecraft agent that:
 
 1. **Clone the repository**
 ```bash
+git clone https://github.com/erlunlian/voyager-minecraft-ai.git
 cd voyager-minecraft-ai
 ```
 
@@ -313,11 +343,35 @@ SELECT * FROM tasks ORDER BY created_at DESC LIMIT 10;
 SELECT * FROM learned_skills;
 ```
 
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Setup
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes
+4. Run tests: `python -m pytest tests/`
+5. Commit your changes: `git commit -m 'Add amazing feature'`
+6. Push to the branch: `git push origin feature/amazing-feature`
+7. Open a Pull Request
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
 Based on the Voyager paper: "Voyager: An Open-Ended Embodied Agent with Large Language Models"
+
+## Support
+
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/erlunlian/voyager-minecraft-ai/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/erlunlian/voyager-minecraft-ai/discussions)
+- 📧 **Contact**: [Create an issue](https://github.com/erlunlian/voyager-minecraft-ai/issues/new) for questions
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=erlunlian/voyager-minecraft-ai&type=Date)](https://star-history.com/#erlunlian/voyager-minecraft-ai&Date)
 
