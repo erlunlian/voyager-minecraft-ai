@@ -59,8 +59,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # Database files
-data/postgres/
-data/chroma/
+data/
 
 # Minecraft world data
 world/

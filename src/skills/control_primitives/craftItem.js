@@ -28,6 +28,11 @@ async function craftItem(bot, name, count = 1) {
         try {
             await bot.craft(recipe, count, craftingTable);
             bot.chat(`I did the recipe for ${name} ${count} times`);
+            
+            // After crafting, mine the crafting table to take it with us
+            if (craftingTable) {
+                await mineCraftingTable(bot);
+            }
         } catch (err) {
             bot.chat(`I cannot do the recipe for ${name} ${count} times`);
         }

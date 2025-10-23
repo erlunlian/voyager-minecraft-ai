@@ -101,7 +101,12 @@ async function mineBlock(bot, name, count = 1) {
             
             // Move to new position
             try {
-                await bot.pathfinder.goto(new goals.GoalXZ(newPos.x, newPos.z));
+                // Use safer goal setting to avoid conflicts
+                if (bot.setGoalSafely) {
+                    await bot.setGoalSafely(new goals.GoalXZ(newPos.x, newPos.z));
+                } else {
+                    await bot.pathfinder.goto(new goals.GoalXZ(newPos.x, newPos.z));
+                }
                 
                 // Check for blocks at new position
                 const newBlocks = bot.findBlocks({

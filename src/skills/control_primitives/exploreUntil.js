@@ -47,7 +47,7 @@ async function exploreUntil(
             bot.pathfinder.setGoal(null);
         };
 
-        const explore = () => {
+        const explore = async () => {
             const x =
                 bot.entity.position.x +
                 Math.floor(Math.random() * 20 + 10) * dx;
@@ -61,9 +61,21 @@ async function exploreUntil(
             if (dy === 0) {
                 goal = new GoalNearXZ(x, z);
             }
-            bot.pathfinder.setGoal(goal);
-
+            
             try {
+                // Use safer goal setting if available
+                if (bot.setGoalSafely) {
+                    await bot.setGoalSafely(goal);
+                } else {
+                    // Fallback to manual synchronization
+                    if (bot.pathfinder.isMoving()) {
+                        bot.pathfinder.setGoal(null);
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                    }
+                    bot.pathfinder.setGoal(goal);
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+
                 const result = callback();
                 if (result) {
                     cleanUp();

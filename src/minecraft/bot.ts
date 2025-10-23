@@ -279,6 +279,28 @@ class MinecraftBot {
           this.sendMessage({ type: "checkpoint", data: checkpoint });
         };
 
+        // Add goal synchronization helper
+        (this.bot as any).setGoalSafely = async (goal: any) => {
+          const pathfinder = (this.bot as any).pathfinder;
+          try {
+            if (pathfinder.isMoving()) {
+              pathfinder.setGoal(null);
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            }
+            pathfinder.setGoal(goal);
+            await new Promise((resolve) => setTimeout(resolve, 200));
+          } catch (error) {
+            const errorMessage =
+              error instanceof Error ? error.message : String(error);
+            console.log(
+              `[Bot] Goal setting conflict resolved: ${errorMessage}`
+            );
+            // Retry once after a short delay
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            pathfinder.setGoal(goal);
+          }
+        };
+
         // Wrap code in async function and provide context
         const asyncCode = `
                     (async function() {
@@ -352,6 +374,7 @@ class MinecraftBot {
       ${this.loadControlPrimitive("exploreUntil")}
       ${this.loadControlPrimitive("useChest")}
       ${this.loadControlPrimitive("shoot")}
+      ${this.loadControlPrimitive("mineCraftingTable")}
       
       // Helper function for combat - waits for mob to be killed in melee
       function waitForMobRemoved(bot, entity, timeout = 300) {

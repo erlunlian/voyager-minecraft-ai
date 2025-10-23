@@ -36,16 +36,18 @@ Code:
         - Use `smeltItem(bot, itemName, fuelName, count)` to smelt items. Do not use `bot.openFurnace` directly.
         - Use `placeItem(bot, name, position)` to place blocks. Do not use `bot.placeBlock` directly.
         - Use `killMob(bot, name, timeout)` to kill mobs. Do not use `bot.attack` directly.
+        - Use `mineCraftingTable(bot)` to mine crafting tables after use. This is important to avoid getting stuck without your crafting table.
     3) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable. You should not make strong assumption about the inventory (as it may be changed at a later time), and therefore you should always check whether you have the required items before using them. If not, you should first collect the required items and reuse the above useful programs.
-    4) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
-    5) Anything defined outside a function will be ignored, define all your variables inside your functions.
-    6) Call `bot.chat` to show the intermediate progress.
-    7) Use `exploreUntil(bot, direction, maxDistance, callback)` when you cannot find something. You should frequently call this before mining blocks or killing mobs. You should select a direction at random every time instead of constantly using (1, 0, 1).
-    8) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
-    9) Do not write infinite loops or recursive functions.
-    10) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
-    11) Name your function in a meaningful way (can infer the task from the name).
-    12) ALWAYS call your main function at the end of the code to execute the task.
+    4) IMPORTANT: Always mine crafting tables after using them to take them with you. The craftItem function automatically does this, but if you place a crafting table manually, remember to mine it afterward to avoid getting stuck without your crafting table.
+    5) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
+    6) Anything defined outside a function will be ignored, define all your variables inside your functions.
+    7) Call `bot.chat` to show the intermediate progress.
+    8) Use `exploreUntil(bot, direction, maxDistance, callback)` when you cannot find something. You should frequently call this before mining blocks or killing mobs. You should select a direction at random every time instead of constantly using (1, 0, 1).
+    9) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
+    10) Do not write infinite loops or recursive functions.
+    11) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
+    12) Name your function in a meaningful way (can infer the task from the name).
+    13) ALWAYS call your main function at the end of the code to execute the task.
 
 You should only respond in the format as described below:
 RESPONSE FORMAT:
